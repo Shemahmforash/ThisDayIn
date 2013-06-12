@@ -1,0 +1,17 @@
+{
+    "name": "shemahmforash/dayinhistory",
+    "description": "Twitter bot that tweets about this day in music history.",
+    "keywords": ["twitter", "music", "dayinhistory"],
+    "license": ["BSD-3"],
+    "authors": [
+        {
+            "name": "Carlos Rosão",
+            "homepage": "http://icdif.com"
+        }
+    ],
+    "require": {
+        "dg/twitter-php": "dev-master",
+        "niels/ganon": "dev-master"
+    }
+    
+}
