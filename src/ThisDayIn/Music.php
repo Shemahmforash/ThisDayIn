@@ -1,7 +1,7 @@
 <?php
-namespace DayIn;
+namespace ThisDayIn;
 
-class DayInMusic extends \DayIn {
+class Music extends \ThisDayIn {
     private $_day;
     private $_month;
     protected $_source = 'http://www.musicorb.com/day';

@@ -5,7 +5,7 @@
     require '../vendor/autoload.php';
 
     //use HTML_Parser_HTML5 class (included in autoload) as parser
-    $dim = new DayIn\DayInMusic( "\HTML_Parser_HTML5" );
+    $dim = new ThisDayIn\Music( "\HTML_Parser_HTML5" );
     $events = $dim->getEvents();
     header("Content-type: text/plain");
     echo json_encode($events);

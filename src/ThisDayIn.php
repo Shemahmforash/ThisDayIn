@@ -1,5 +1,5 @@
 <?php
-Abstract class DayIn {
+Abstract class ThisDayIn {
 
     //url or file where to read the data from
     protected $_source;

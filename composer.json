@@ -1,7 +1,7 @@
 {
-    "name": "shemahmforash/dayinhistory",
-    "description": "Twitter bot that tweets about this day in music history.",
-    "keywords": ["twitter", "music", "dayinhistory"],
+    "name": "shemahmforash/thisdayin",
+    "description": "a project which aims in presenting information about this day in [history|music|etc...] facts in an easy and structured way.",
+    "keywords": ["music", "history", "thisdayin"],
     "license": ["BSD-3"],
     "authors": [
         {
@@ -10,7 +10,6 @@
         }
     ],
     "require": {
-        "dg/twitter-php": "dev-master",
         "niels/ganon": "dev-master"
     },
     "autoload": {               
