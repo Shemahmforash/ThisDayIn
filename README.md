@@ -2,8 +2,7 @@
 ThisDayIn is a project which aims in presenting information about this day in [history|music|etc...] facts in an easy and structured way.
 
 ## Installation
-This project is in Composer format, so you just need to run, and all dependencies will be installed:
-`php composer.phar install`
+This project is in Composer format, so you just need to run `php composer.phar install`, and all dependencies will be installed:
 
 ##Example
 It is very simple to use this class. You just need to include the autoload, and instantiate the class by passing as parameter the parser you want to be used.
