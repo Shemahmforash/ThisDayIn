@@ -2,3 +2,4 @@ vendor
 old
 composer.lock
 composer.phar
+index.php

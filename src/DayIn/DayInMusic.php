@@ -28,6 +28,9 @@ class DayInMusic extends \DayIn {
         return $this->_parse( $parser );
     }
 
+    /**
+        TODO: generalize this, as for now, it depends on HTML_Parser_HTML5 syntax
+    */
     protected function _parse( $parser ) {
         $parser = $parser->root;
 
