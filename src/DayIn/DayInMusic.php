@@ -1,10 +1,14 @@
 <?php
-class DayInMusic {
+namespace DayIn;
+
+class DayInMusic extends \DayIn {
     private $_day;
     private $_month;
     protected $_source = 'http://www.musicorb.com/day';
 
-    public function __construct( $source = null, $day = null, $month = null ) {
+    public function __construct( $parser, $source = null, $day = null, $month = null ) {
+        $this->_parser = $parser;
+
         $this->_day   = $day ? $day : date("j");
         $this->_month = $month ? $month : date("F");
 
@@ -19,7 +23,7 @@ class DayInMusic {
 
     public function getEvents() {
         $file   = file_get_contents($this->_source);
-        $parser = new HTML_Parser_HTML5( $file );
+        $parser = new $this->_parser( $file );
 
         return $this->_parse( $parser );
     }

@@ -12,6 +12,8 @@
     "require": {
         "dg/twitter-php": "dev-master",
         "niels/ganon": "dev-master"
+    },
+    "autoload": {               
+        "classmap": ["src/"]
     }
-    
 }
