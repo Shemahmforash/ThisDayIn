@@ -34,7 +34,7 @@ class Music extends \ThisDayIn {
     protected function _parse( $parser ) {
         $parser = $parser->root;
 
-        $data = [];
+        $data = array();
         foreach($parser('div[itemscope]') as $element) {
             $year        = $element('span[itemprop=date]', 0);
             $description = $element('span[itemprop=description]', 0);
