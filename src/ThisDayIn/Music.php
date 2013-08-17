@@ -35,20 +35,36 @@ class Music extends \ThisDayIn {
         $parser = $parser->root;
 
         $data = array();
-        foreach($parser('div[itemscope]') as $element) {
-            $year        = $element('span[itemprop=date]', 0);
+
+        foreach($parser('div[itemtype]') as $element) {
             $description = $element('span[itemprop=description]', 0);
 
-            if( !$year && $description ) 
-                continue;
+            if( $element->itemtype === "http://schema.org/Person" ) {
+                if( $date = $element('span[itemprop=birthDate]', 0) ) {
+                    $type = "Birth"; 
+                }
+                else if( $date = $element('span[itemprop=deathDate]', 0) ) {
+                    $type = "Death"; 
+                }
 
-            $year        = $year->getInnerText();
-            $description = $description->getInnerText();
+                $name = $element('span[itemprop=name]', 0);
+                $date = $date->datetime;
+                $description = $description->getInnerText();
+                $name = $name->getInnerText();
 
-            if( $year && $description ) {
-                $hash = array("year" => $year, "description" => $description );
-                array_push( $data, $hash );
+                $hash = array("date" => $date, "description" => $description, 'name' => $name, 'type' => $type );
+
             }
+            else if( $element->itemtype === "http://schema.org/Event/HistoricalEvent" ) {
+                $type = "Event";
+                $date = $element('span[itemprop=date]', 0);
+                $date = $date->datetime;
+                $description = $description->getInnerText();
+
+                $hash = array("date" => $date, "description" => $description, 'type' => $type );
+            }
+
+            array_push( $data, $hash );
         }
 
         return $data;
