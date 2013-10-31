@@ -6,10 +6,11 @@
 
     $day   = htmlspecialchars($_GET['day'] );
     $month = htmlspecialchars($_GET['month'] );
+    $filters = $_GET['filters'];
 
     //use HTML_Parser_HTML5 class (included in autoload) as parser
     $dim = new ThisDayIn\Music( "\HTML_Parser_HTML5", null, $day, $month );
-    $events = $dim->getEvents();
+    $events = $dim->getEvents( $filters );
     header("Content-type: text/plain");
     echo json_encode($events);
 ?>

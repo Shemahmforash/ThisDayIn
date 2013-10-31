@@ -21,17 +21,18 @@ class Music extends \ThisDayIn {
        return sprintf('%s/%s/%s', $this->_source, $this->_month, $this->_day); 
     }
 
-    public function getEvents() {
+    public function getEvents( $filters = null) {
         $file   = file_get_contents($this->_source);
         $parser = new $this->_parser( $file );
 
-        return $this->_parse( $parser );
+        return $this->_parse( $parser, $filters );
     }
 
     /**
         TODO: generalize this, as for now, it depends on HTML_Parser_HTML5 syntax
     */
-    protected function _parse( $parser ) {
+    #receives filters with the types accepted
+    protected function _parse( $parser, $filters ) {
         $parser = $parser->root;
 
         $data = array();
@@ -64,7 +65,18 @@ class Music extends \ThisDayIn {
                 $hash = array("date" => $date, "description" => $description, 'type' => $type );
             }
 
-            array_push( $data, $hash );
+            #filter data of a specific type or set of types
+            if( $filters ) {
+                if(is_array( $filters ) && in_array( $type, $filters )) {
+                    array_push( $data, $hash );
+                }
+                else if( $type === $filters ) {
+                    array_push( $data, $hash );
+                }
+            }
+            else {
+                array_push( $data, $hash );
+            }
         }
 
         return $data;
