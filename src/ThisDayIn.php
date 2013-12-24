@@ -2,10 +2,10 @@
 Abstract class ThisDayIn {
 
     //url or file where to read the data from
-    protected $_source;
+    private $_source;
 
     //class that will parse the source
-    protected $_parser;
+    private $_parser;
 
     /*
     The method to be called from outside the class to get the events

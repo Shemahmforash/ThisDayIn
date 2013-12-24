@@ -4,11 +4,10 @@ namespace ThisDayIn;
 class Music extends \ThisDayIn {
     private $_day;
     private $_month;
-    protected $_source = 'http://www.musicorb.com/day';
+    private $_source = 'http://www.musicorb.com/day';
+    private $_parser = "\HTML_Parser_HTML5";
 
-    public function __construct( $parser, $source = null, $day = null, $month = null ) {
-        $this->_parser = $parser;
-
+    public function __construct( $day = null, $month = null ) {
         $this->_day   = $day ? $day : date("j");
         $this->_month = $month ? $month : date("F");
 
@@ -28,9 +27,6 @@ class Music extends \ThisDayIn {
         return $this->_parse( $parser, $filters );
     }
 
-    /**
-        TODO: generalize this, as for now, it depends on HTML_Parser_HTML5 syntax
-    */
     #receives filters with the types accepted
     protected function _parse( $parser, $filters ) {
         $parser = $parser->root;
