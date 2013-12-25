@@ -2,33 +2,37 @@
 namespace ThisDayIn;
 
 class Music extends \ThisDayIn {
-    private $_day;
-    private $_month;
-    private $_source = 'http://www.musicorb.com/day';
-    private $_parser = "\HTML_Parser_HTML5";
+    private $day;
+    private $month;
+    private $source = 'http://www.musicorb.com/day';
+    private $parser = "\HTML_Parser_HTML5";
 
     public function __construct( $day = null, $month = null ) {
-        $this->_day   = $day ? $day : date("j");
-        $this->_month = $month ? $month : date("F");
+        $this->day   = $day ? $day : date("j");
+        $this->month = $month ? $month : date("F");
 
-        $this->_source = $source ? $source : $this->_source;
+        $this->source = is_null($source) ? $source : $this->source;
 
-        $this->_source = $this->_create_source();
+        $this->source = $this->createSource();
     }
 
-    protected function _create_source() {
-       return sprintf('%s/%s/%s', $this->_source, $this->_month, $this->_day); 
+    public getSource() {
+        return $this->source;     
+    }
+
+    protected function createSource() {
+       return sprintf('%s/%s/%s', $this->source, $this->month, $this->day); 
     }
 
     public function getEvents( $filters = null) {
-        $file   = file_get_contents($this->_source);
-        $parser = new $this->_parser( $file );
+        $file   = file_get_contents($this->source);
+        $parser = new $this->parser( $file );
 
-        return $this->_parse( $parser, $filters );
+        return $this->parse( $parser, $filters );
     }
 
     #receives filters with the types accepted
-    protected function _parse( $parser, $filters ) {
+    protected function parse( $parser, $filters ) {
         $parser = $parser->root;
 
         $data = array();
