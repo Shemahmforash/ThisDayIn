@@ -15,6 +15,6 @@ Abstract class ThisDayIn {
     /*
     It may be necessary to create the source string by using today's date, for instance
     */
-    abstract protected function _create_source();
+    abstract protected function createSource();
 
 }
