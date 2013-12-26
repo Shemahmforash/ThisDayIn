@@ -11,8 +11,6 @@ class Music extends \ThisDayIn {
         $this->day   = $day ? $day : date("j");
         $this->month = $month ? $month : date("F");
 
-        $this->source = is_null($source) ? $source : $this->source;
-
         $this->source = $this->createSource();
     }
 
