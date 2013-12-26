@@ -16,7 +16,7 @@ class Music extends \ThisDayIn {
         $this->source = $this->createSource();
     }
 
-    public getSource() {
+    public function getSource() {
         return $this->source;     
     }
 
